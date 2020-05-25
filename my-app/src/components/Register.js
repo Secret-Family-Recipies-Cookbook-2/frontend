@@ -15,7 +15,7 @@ const Register = () => {
         console.log(JSON.stringify(registerData))
         localStorage.setItem("token", JSON.stringify(registerData))
         history.push('/')
-        //window.location.reload
+        window.location.reload()
     }
 
     return (
