@@ -8,8 +8,8 @@ const initialState= {
 }
 
 const initialFormErrors={
-    username: 'Username is required',
-    password: 'Password is required',
+    username: '',
+    password: '',
 }
 
 const loginSchema = yup.object().shape({
@@ -84,6 +84,11 @@ const Login = () => {
                 />
 
                 <button disabled={!buttonEnabled} type='submit'>Login</button>
+                <div className='errors-container'>
+                    <div className='form-errors'>{loginFormErrors.username}</div>
+                    <div className='form-errors'>{loginFormErrors.email}</div>
+                    <div className='form-errors'>{loginFormErrors.password}</div>
+                </div>
             </form>
 
         </div>
