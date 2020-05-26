@@ -31,7 +31,7 @@ const NavBar = () => {
                                 history.push('/')
                                 window.location.reload()
                         }}>
-                            Login
+                            Login/Register
                         </button> */}
                     </>
                 )

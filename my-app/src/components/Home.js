@@ -8,7 +8,7 @@ const Home = () => {
 
     return (
         <>
-            {
+            {/* {
                 !token && (
                     <section className='login'>
                         <article>
@@ -18,7 +18,7 @@ const Home = () => {
                             <Register />
                         </article>
                     </section>
-            )}
+            )} */}
         </>
     )
 }

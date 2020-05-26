@@ -1,5 +1,15 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+
+const initialState= {
+    username: '',
+    password: '',
+}
+
+const initialFormErrors={
+    username: 'Username is required',
+    password: 'Password is required',
+}
 
 const Login = () => {
     
@@ -20,26 +30,28 @@ const Login = () => {
     }
     
     return (
-        <form onSubmit={(evt)=>loginHandler(evt)}>
-            <label>Username</label>
-            <input 
-                type='text'
-                name='username'
-                value={loginData.username}
-                onChange={(evt)=> loginChangeHandler(evt)}
-            />
+        <div className='login-container'>
+            <form onSubmit={(evt)=>loginHandler(evt)}>
+                <label>Username</label>
+                <input 
+                    type='text'
+                    name='username'
+                    value={loginData.username}
+                    onChange={(evt)=> loginChangeHandler(evt)}
+                />
 
-            <label>Password</label>
-            <input 
-                type='password'
-                name='password'
-                value={loginData.password}
-                onChange={(evt)=> loginChangeHandler(evt)}
-            />
+                <label>Password</label>
+                <input 
+                    type='password'
+                    name='password'
+                    value={loginData.password}
+                    onChange={(evt)=> loginChangeHandler(evt)}
+                />
 
-            <button type='submit'>Login</button>
+                <button type='submit'>Login</button>
+            </form>
 
-        </form>
+        </div>
     )
 }
 export default Login
