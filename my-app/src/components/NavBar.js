@@ -10,6 +10,8 @@ const NavBar = () => {
 
     return (
         <nav>
+
+            <a href='https://secretfamilyrecipesv2.netlify.app/'>Home</a>
             {
                 token ? (
                     <>
@@ -21,7 +23,8 @@ const NavBar = () => {
                         }}>
                             Logout
                         </button>
-                        <Link to='/'>placeholder for logged in menu items</Link>
+                        {/* <Link to='/'>I won't go to home, but unsure where to go at the moment.</Link> */}
+                        
                     </>
                 ):(
                     <>

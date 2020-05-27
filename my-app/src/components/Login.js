@@ -65,7 +65,7 @@ const Login = () => {
     }
     
     return (
-        <div className='login-container'>
+        <div className='form-container'>
             <form onSubmit={(evt)=>loginHandler(evt)}>
                 <label>Username</label>
                 <input 
@@ -92,6 +92,10 @@ const Login = () => {
                     <div className='form-errors'>{loginFormErrors.password}</div>
                 </div>
             </form>
+            <div className='no-account'>
+                Don't have an account?&nbsp;
+                <Link className='register-link' to='/register'>Click Here</Link>
+            </div>
 
         </div>
     )

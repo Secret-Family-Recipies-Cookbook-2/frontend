@@ -9,6 +9,8 @@ const Home = () => {
     //let token = localStorage.getItem('token')
 
     const getMockData = () => {
+
+        //axios without auth
         axios.get('https://secretfamilyrecipes3.herokuapp.com/api/mock')
             .then(res => {
                 console.log(res)
@@ -24,7 +26,9 @@ const Home = () => {
     }, [])
     return (
         <>
+            <Login />
 
+            <h2>Start Collecting Recipes Like These Now!</h2>
             {
               mockRecipes.map(recipe => {
                   return (
@@ -32,6 +36,7 @@ const Home = () => {
                   )
               })  
             }
+
             {/* {
                 !token && (
                     <section className='login'>
