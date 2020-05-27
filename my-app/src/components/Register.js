@@ -48,7 +48,7 @@ const Register = () => {
     },[registerData])
     
     const registerChangeHandler = (evt) => {
-    
+        evt.persist()
 
         yup 
             .reach(registerSchema, evt.target.name)
@@ -58,7 +58,7 @@ const Register = () => {
             })
             .catch(err => {
                 setRegisterFormErrors({...registerFormErrors, 
-                 //[evt.target.name]: err.errors[0]
+                [evt.target.name]: err.errors[0]
                 })
             })
         setRegisterData({...registerData, [evt.target.name]: evt.target.value})

@@ -38,6 +38,8 @@ const Login = () => {
     }, [loginData])
 
     const loginChangeHandler = (evt) => {
+
+        evt.persist()
         setLoginData({...loginData, [evt.target.name]: evt.target.value})
 
         yup
@@ -49,7 +51,7 @@ const Login = () => {
             .catch((err) => {
                 setLoginFormErrors({
                     ...loginFormErrors,
-                    //[evt.target.name]: err.errors[0]
+                    [evt.target.name]: err.errors[0]
                 })
             })
     }
