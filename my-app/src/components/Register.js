@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
+
 
 const initialState = {
     username: '',
@@ -73,7 +74,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <div className='form-container'>
             <form onSubmit={(evt)=> registerHandler(evt)}>
                 <label>Username</label>
                 <input 
@@ -105,7 +106,12 @@ const Register = () => {
                     <div className='form-errors'>{registerFormErrors.password}</div>
                 </div>
             </form>
-        </>
+
+            <div className='no-account'>
+                Already have an account?&nbsp;
+                <Link className='login-link' to='/login'>Click Here</Link>
+            </div>
+        </div>
     )
 }
 export default Register
