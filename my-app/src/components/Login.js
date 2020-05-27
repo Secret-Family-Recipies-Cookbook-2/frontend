@@ -65,39 +65,41 @@ const Login = () => {
     }
     
     return (
-        <div className='form-container'>
-            <form onSubmit={(evt)=>loginHandler(evt)}>
-                <label>Username</label>
-                <input 
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={loginData.username}
-                    onChange={(evt)=> loginChangeHandler(evt)}
-                />
+        <>
+            <div className='form-container'>
+                <form onSubmit={(evt)=>loginHandler(evt)}>
+                    <label>Username</label>
+                    <input 
+                        type='text'
+                        name='username'
+                        placeholder='Username'
+                        value={loginData.username}
+                        onChange={(evt)=> loginChangeHandler(evt)}
+                    />
 
-                <label>Password</label>
-                <input 
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={loginData.password}
-                    onChange={(evt)=> loginChangeHandler(evt)}
-                />
+                    <label>Password</label>
+                    <input 
+                        type='password'
+                        name='password'
+                        placeholder='Password'
+                        value={loginData.password}
+                        onChange={(evt)=> loginChangeHandler(evt)}
+                    />
 
-                <button disabled={!buttonEnabled} type='submit'>Login</button>
-                <div className='errors-container'>
-                    <div className='form-errors'>{loginFormErrors.username}</div>
-                    <div className='form-errors'>{loginFormErrors.email}</div>
-                    <div className='form-errors'>{loginFormErrors.password}</div>
+                    <button disabled={!buttonEnabled} type='submit'>Login</button>
+                    <div className='errors-container'>
+                        <div className='form-errors'>{loginFormErrors.username}</div>
+                        <div className='form-errors'>{loginFormErrors.email}</div>
+                        <div className='form-errors'>{loginFormErrors.password}</div>
+                    </div>
+                </form>
+                <div className='no-account'>
+                    Don't have an account?&nbsp;
+                    <Link className='register-link' to='/register'>Click Here</Link>
                 </div>
-            </form>
-            <div className='no-account'>
-                Don't have an account?&nbsp;
-                <Link className='register-link' to='/register'>Click Here</Link>
             </div>
-
-        </div>
+            
+        </>
     )
 }
 export default Login

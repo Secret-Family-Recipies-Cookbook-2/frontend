@@ -1,6 +1,4 @@
 import React, {useState, useEffect}from 'react'
-import Register from './Register'
-import Login from './Login'
 import MockRecipe from './MockRecipe'
 import axios from 'axios'
 
@@ -26,7 +24,7 @@ const Home = () => {
     }, [])
     return (
         <>
-            <Login />
+            
 
             <h2>Start Collecting Recipes Like These Now!</h2>
             {
