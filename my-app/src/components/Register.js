@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
+import axios from 'axios'
 
 const initialState = {
     username: '',
@@ -66,10 +67,16 @@ const Register = () => {
 
     const registerHandler = (evt) => {
         evt.preventDefault()
-        console.log(JSON.stringify(registerData))
-        localStorage.setItem("token", JSON.stringify(registerData))
-        history.push('/')
-        window.location.reload()
+        // console.log(JSON.stringify(registerData))
+        // localStorage.setItem("token", JSON.stringify(registerData))
+        // history.push('/')
+        // window.location.reload()
+
+        axios
+            .post('https://secretfamilyrecipes3.herokuapp.com/api/auth/register', registerData)
+            .then(res => console.log('Post New User Res:', res))
+            .catch(err => console.log('Post New User Error:', err.message))
+        history.push('/login')
     }
 
     return (

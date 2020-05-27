@@ -5,6 +5,9 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import Register from './components/Register'
 import Login from './components/Login'
+import PrivateRoute from './utils/PrivateRoute.js'
+import AddRecipeForm from './components/AddRecipeForm.js';
+import UpdateRecipeForm from './components/UpdateRecipeForm.js'
 
 function App() {
   return (
@@ -26,9 +29,11 @@ function App() {
             <Login />
           </Route>
 
-          <Route path='/' component={Home}>
-            <Home />
-          </Route>
+          <PrivateRoute path='/add-recipe' component={AddRecipeForm} />
+
+          <PrivateRoute path='update-recipe' component={UpdateRecipeForm} />
+
+          <PrivateRoute path='/' component={Home} />
         </Switch>
       </div>
     </div>

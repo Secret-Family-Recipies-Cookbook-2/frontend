@@ -1,8 +1,8 @@
 import React, {useState, useEffect}from 'react'
-import Register from './Register'
-import Login from './Login'
 import MockRecipe from './MockRecipe'
 import axios from 'axios'
+
+import RecipiesList from './RecipesList.js'
 
 const Home = () => {
     const [mockRecipes, setMockRecipies]= useState([])
@@ -24,25 +24,18 @@ const Home = () => {
     }, [])
     return (
         <>
+            <h1>Featured Recipies:</h1>
+                {
+                mockRecipes.map(recipe => {
+                    return (
+                        <MockRecipe key={recipe.id} details={recipe}/>
+                    )
+                })  
+                }
+            <br />
 
-            {
-              mockRecipes.map(recipe => {
-                  return (
-                      <MockRecipe key={recipe.id} details={recipe}/>
-                  )
-              })  
-            }
-            {/* {
-                !token && (
-                    <section className='login'>
-                        <article>
-                            <Login />
-                        </article>
-                        <article>
-                            <Register />
-                        </article>
-                    </section>
-            )} */}
+            <RecipiesList />
+            
         </>
     )
 }

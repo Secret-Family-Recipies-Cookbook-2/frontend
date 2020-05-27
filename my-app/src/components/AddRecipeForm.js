@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
+import {connect} from 'react-redux'
+// import {postRecipe} from '../store/actions/recipeActions.js'
 
 const blankForm = {
   title: '',
@@ -10,17 +12,25 @@ const blankForm = {
   source: ''
 }
 
-const RecipeForm = props => {
+const AddRecipeForm = props => {
   const [recipe, setRecipe] = useState(blankForm)
   const params = useParams()
+  const history = useHistory()
 
   const changeRecipe = e => {
     setRecipe({...recipe, [e.target.name]:e.target.value})
   }
 
   const submitRecipe = e => {
+    // props.postRecipe(recipe)
+
     axiosWithAuth()
       .post(`api/recipes/${params.id}/user`, recipe)
+        .then(res => console.log('Post New Recipe Res:', res))
+        .catch(err => console.log('Post New Recipe Error:', err.errorMessage))
+    history.push('/home')
+
+
   }
 
   return(
@@ -59,6 +69,7 @@ const RecipeForm = props => {
           />
         </label>
         
+        <br />
 
         <label>Ingredients:
           <input
@@ -92,4 +103,4 @@ const RecipeForm = props => {
   )
 }
 
-export default RecipeForm
+export default connect(null, {})(AddRecipeForm)
