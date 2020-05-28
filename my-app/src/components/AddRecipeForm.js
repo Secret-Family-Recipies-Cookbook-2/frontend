@@ -30,7 +30,7 @@ const AddRecipeForm = props => {
           console.log('Post New Recipe Res:', res)
         })
         .catch(err => console.log('Post New Recipe Error:', err))
-    history.push('/')
+    history.push('/my-recipes')
   }
 
   return(
