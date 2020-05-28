@@ -1,12 +1,13 @@
 import React, {useState, useEffect}from 'react'
+import {useHistory} from 'react-router-dom'
 import MockRecipe from './MockRecipe'
 import axios from 'axios'
-
-import RecipiesList from './RecipesList.js'
 
 const Home = () => {
     const [mockRecipes, setMockRecipies]= useState([])
     //let token = localStorage.getItem('token')
+
+    const history = useHistory()
 
     const getMockData = () => {
         axios.get('https://secretfamilyrecipes3.herokuapp.com/api/mock')
@@ -34,7 +35,7 @@ const Home = () => {
                 }
             <br />
 
-            <RecipiesList />
+            <button onClick={()=> history.push('my-recipes')}>My Recipes</button>
             
         </>
     )

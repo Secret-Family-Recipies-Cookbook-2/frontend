@@ -3,12 +3,15 @@ import {useParams} from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
 import {UPDATE_RECIPE_SUCCESS} from '../store/actions/recipeActions.js'
 
+const userID = window.localStorage.getItem('id')
+
 const blankForm = {
   title: '',
   ingredients: '',
   instructions: '',
   category: '',
-  source: ''
+  source: '',
+  user_id: userID
 }
 
 const UpdateRecipeForm = props => {
@@ -17,15 +20,15 @@ const UpdateRecipeForm = props => {
 
   useEffect(()=>{
     axiosWithAuth()
-      .get(`api/recipes/${params.id}`)
+      .get(`api/recipes/${userID}`)
       .then(res => {
         console.log('Update Recipe Get Request:', res)
-        setRecipeInfo(res.data)
+        setRecipeInfo(res.data[0])
       })
       .catch(err => {
         console.log('Update Recipe Get Request:', err)
       })
-  })
+  }, [])
 
   const updateRecipe = e => {
     setRecipeInfo({...recipeInfo, [e.target.name]:e.target.value})
@@ -35,13 +38,13 @@ const UpdateRecipeForm = props => {
     e.preventDefault()
 
     axiosWithAuth
-    .put(`api/recipes/${params.id}`, recipeInfo)
-    .then(res => {
-      console.log(res)
-      dispatchEvent({type: UPDATE_RECIPE_SUCCESS})
-      // history.push(`/movies/${params.id}`)
-    })
-    .catch(err => console.log(err))
+      .put(`api/recipes/${params.id}`, recipeInfo)
+      .then(res => {
+        console.log(res)
+        dispatchEvent({type: UPDATE_RECIPE_SUCCESS})
+        // history.push(`/movies/${params.id}`)
+      })
+      .catch(err => console.log(err))
 
   }
 

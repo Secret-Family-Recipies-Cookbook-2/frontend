@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {connect} from 'react-redux'
 import RecipeCard from './RecipeCard'
-import {useHistory, Link, useParams} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
+import {getUserRecipes} from '../store/actions/recipeActions.js'
 
 const RecipiesList = props => {
   const history = useHistory()
-  const params = useParams()
+
+  useEffect(()=>{
+    props.getUserRecipes()
+  }, [])
+
+  console.log(props.recipes)
 
   return(
     <div>
@@ -30,4 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(RecipiesList)
+export default connect(mapStateToProps, {getUserRecipes})(RecipiesList)

@@ -7,7 +7,8 @@ import {
   UPDATE_RECIPE_FAILURE,
   DELETE_RECIPE_START,
   DELETE_RECIPE_SUCCESS,
-  DELETE_RECIPE_FAILURE
+  DELETE_RECIPE_FAILURE,
+  GET_USER_RECIPES
 } from '../actions/recipeActions.js'
 
 
@@ -22,6 +23,8 @@ const initialState = {
 }
 
 export const recipeReducer = (state = initialState, action) => {
+  console.log(state.recipes)
+
   switch(action.type){
     case POST_RECIPE_START:
       return{
@@ -66,7 +69,7 @@ export const recipeReducer = (state = initialState, action) => {
     case DELETE_RECIPE_SUCCESS:
       return{
         ...state,
-        recipies: state.recipes.filter(item => item.id !== action.payload.id), // payload.id??? or just payload???
+        recipes: state.recipes.filter(item => item.id !== action.payload.id), // payload.id??? or just payload???
         isDeleting: false
       }
 
@@ -74,6 +77,12 @@ export const recipeReducer = (state = initialState, action) => {
       return{
         ...state,
         isDeleting: false
+      }
+
+    case GET_USER_RECIPES:
+      return{
+        ...state,
+        recipes: action.payload
       }
 
     default: return state

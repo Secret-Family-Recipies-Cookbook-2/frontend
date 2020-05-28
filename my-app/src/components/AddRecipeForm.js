@@ -3,23 +3,22 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 import {useParams, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+const userID = window.localStorage.getItem('id')
+
 const blankForm = {
   title: '',
   ingredients: '',
   instructions: '',
   category: '',
   source: '',
-  // user_id: ''
+  user_id: userID
 }
 
 const AddRecipeForm = props => {
   const [recipe, setRecipe] = useState(blankForm)
-  const params = useParams()
   const history = useHistory()
 
-  console.log(params)
-
-  // setRecipe({...recipe, [user_id]: params.user_id})
+  // console.log(params)
 
   const changeRecipe = e => {
     setRecipe({...recipe, [e.target.name]:e.target.value})
@@ -27,10 +26,9 @@ const AddRecipeForm = props => {
 
   const submitRecipe = e => {
     axiosWithAuth()
-      .post(`api/recipes/${params.user_id}/user`, recipe)
+      .post(`api/recipes/${userID}/user`, recipe)
         .then(res => {
           console.log('Post New Recipe Res:', res)
-          setRecipe(res.data)
         })
         .catch(err => console.log('Post New Recipe Error:', err.errorMessage))
     history.push('/')

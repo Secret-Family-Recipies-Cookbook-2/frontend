@@ -74,9 +74,12 @@ const Register = () => {
 
         axios
             .post('https://secretfamilyrecipes3.herokuapp.com/api/auth/register', registerData)
-            .then(res => console.log('Post New User Res:', res))
+            .then(res => {
+                console.log('Post New User Res:', res)
+                window.localStorage.setItem('id', res.data.data.id)
+                history.push('/login')
+            })
             .catch(err => console.log('Post New User Error:', err.message))
-        history.push('/login')
     }
 
     return (

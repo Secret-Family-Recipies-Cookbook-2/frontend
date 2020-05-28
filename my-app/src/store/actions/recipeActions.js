@@ -1,6 +1,8 @@
 import {axiosWithAuth} from '../../utils/axiosWithAuth.js'
 // import {useParams} from 'react-router-dom'
 
+const userID = window.localStorage.getItem('id')
+
 export const POST_RECIPE_START = 'POST_RECIPE_START'
 export const POST_RECIPE_SUCCESS = 'POST_RECIPE_SUCCESS'
 export const POST_RECIPE_FAILURE = 'POST_RECIPE_FAILURE'
@@ -15,7 +17,6 @@ export const POST_RECIPE_FAILURE = 'POST_RECIPE_FAILURE'
 //       .catch(err => console.log('Post New Recipe Error:', err))
 //   }
 // }
-
 
 
 export const UPDATE_RECIPE_START = 'UPDATE_RECIPE_START'
@@ -44,3 +45,17 @@ export const deleteRecipe = recipe => {
       })
   }
 };
+
+export const GET_USER_RECIPES = 'GET_USER_RECIPES'
+
+export const getUserRecipes = () => {
+  return dispatch => {
+    axiosWithAuth()
+      .get(`api/recipes/${userID}/user`)
+      .then(res => {
+        console.log('Get Current User Recipies:', res)
+        dispatch({type: GET_USER_RECIPES, payload: res.data})
+      })
+      .catch(err => console.log(err))
+  }
+}
