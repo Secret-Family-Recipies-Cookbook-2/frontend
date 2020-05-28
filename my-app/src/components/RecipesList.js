@@ -11,9 +11,29 @@ const ListStyle = styled.div`
   flex-direction: column;
   align-items: center;
 
-  .listHeader {
-    font-family: 'Kaushan Script', cursive;
-  }
+    .searchBar {
+      width: 40%;
+      height: 25px;
+      margin: 15px 0;
+      text-align: center;
+      border: 3px solid #AAAAFF;
+      border-radius: 5px;
+    }
+
+    .listHeader {
+      font-family: 'Kaushan Script', cursive;
+      color: #AAAAFF;
+    }
+
+    .addBtn {
+      width: 150px;
+      margin: 0 25%;
+      padding: 5px 0;
+      border: 3px solid #AAAAFF;
+      border-radius: 5px;
+      background-color: #0000CC;
+      color: white;
+    }
 `
 
 const RecipiesList = props => {
@@ -52,6 +72,7 @@ const RecipiesList = props => {
   return(
     <ListStyle>
       <input
+        className='searchBar'
         type='text'
         placeholder='Search Recipes by Name'
         value={searchTerm}
@@ -65,7 +86,9 @@ const RecipiesList = props => {
       
       <br />
 
-      <button onClick={()=> history.push(`add-recipe/:user_id`)}>
+      <button 
+        className='addBtn'
+        onClick={()=> history.push(`add-recipe/:user_id`)}>
         Add New Recipe
       </button>
 

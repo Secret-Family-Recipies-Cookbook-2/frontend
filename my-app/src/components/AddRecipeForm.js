@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import {useHistory} from 'react-router-dom'
+import RecipeForms from './styles/RecipeForms'
 
 const userID = window.localStorage.getItem('id')
 
@@ -34,7 +35,7 @@ const AddRecipeForm = props => {
   }
 
   return(
-    <div>
+    <RecipeForms>
       <h2>Add New Recipe</h2>
 
       <form onSubmit={submitRecipe}>
@@ -72,7 +73,9 @@ const AddRecipeForm = props => {
         <br />
 
         <label>Ingredients:
-          <input
+        <textarea
+            cols='25'
+            rows='4'
             name='ingredients'
             type='text'
             value={recipe.ingredients}
@@ -83,7 +86,9 @@ const AddRecipeForm = props => {
         <br />
 
         <label>Instructions:
-          <input
+        <textarea
+            cols='25'
+            rows='4'
             name='instructions'
             type='text'
             value={recipe.instructions}
@@ -94,12 +99,13 @@ const AddRecipeForm = props => {
         <br />
 
         <input
+          className='submitBtn'
           name='submit'
           type='submit'
           value='Add Recipe!'
         />
           </form>
-    </div>
+    </RecipeForms>
   )
 }
 
