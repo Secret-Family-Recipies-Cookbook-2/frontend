@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import axios from 'axios'
 
 import LoginCard from './styles/LoginCard'
+import axios from 'axios'
 
 
 const initialState= {
@@ -67,6 +68,7 @@ const Login = () => {
         // localStorage.setItem('token', JSON.stringify(loginData))
         // history.push('/')
         // window.location.reload()
+
 
         axios
             .post('https://secretfamilyrecipes3.herokuapp.com/api/auth/login', loginData)
