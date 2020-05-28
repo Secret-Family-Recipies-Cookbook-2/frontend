@@ -25,6 +25,10 @@ const Home = () => {
     }, [])
     return (
         <>
+            <button onClick={()=> history.push('my-recipes')}>My Recipes</button>
+
+            <br />
+
            <h2>Start Collecting Recipes Like These Now!</h2>
                 {
                 mockRecipes.map(recipe => {
@@ -33,10 +37,6 @@ const Home = () => {
                     )
                 })  
                 }
-            <br />
-
-            <button onClick={()=> history.push('my-recipes')}>My Recipes</button>
-            
         </>
     )
 }

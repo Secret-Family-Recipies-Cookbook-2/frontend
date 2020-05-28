@@ -56,6 +56,6 @@ export const getUserRecipes = () => {
         console.log('Get Current User Recipies:', res)
         dispatch({type: GET_USER_RECIPES, payload: res.data})
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log('Get User Recipies Error:', err))
   }
 }

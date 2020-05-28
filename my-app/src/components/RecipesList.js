@@ -15,6 +15,8 @@ const RecipiesList = props => {
 
   return(
     <div>
+      <br />
+
       <h2>My Recipies:</h2>
 
       {props.recipes.map(item => <RecipeCard recipe={item}/>)}

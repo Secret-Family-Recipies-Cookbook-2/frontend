@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import {useParams, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const userID = window.localStorage.getItem('id')
@@ -17,8 +17,6 @@ const blankForm = {
 const AddRecipeForm = props => {
   const [recipe, setRecipe] = useState(blankForm)
   const history = useHistory()
-
-  // console.log(params)
 
   const changeRecipe = e => {
     setRecipe({...recipe, [e.target.name]:e.target.value})
