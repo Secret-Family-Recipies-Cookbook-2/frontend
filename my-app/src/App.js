@@ -5,6 +5,10 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import Register from './components/Register'
 import Login from './components/Login'
+import PrivateRoute from './utils/PrivateRoute.js'
+import AddRecipeForm from './components/AddRecipeForm.js';
+import UpdateRecipeForm from './components/UpdateRecipeForm.js'
+import RecipesList from './components/RecipesList';
 
 function App() {
   return (
@@ -27,10 +31,16 @@ function App() {
           <Route path='/login'>
             <Login />
           </Route>
+
+          <PrivateRoute path='/add-recipe/:user_id' component={AddRecipeForm} />
+
+          <PrivateRoute path='/update-recipe/:id' component={UpdateRecipeForm} />
+
+          <PrivateRoute path='/my-recipes' component={RecipesList} />
+
+          <PrivateRoute path='/' component={Home} />
+
         </Switch>
-        <Route path='/' >
-            <Home />
-        </Route>
       </div>
     </div>
   );

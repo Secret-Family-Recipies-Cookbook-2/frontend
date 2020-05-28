@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
+
+import axios from 'axios'
+
 import LoginCard from './styles/LoginCard'
+
 
 const initialState= {
     username: '',
@@ -59,10 +63,19 @@ const Login = () => {
 
     const loginHandler = (evt) => {
         evt.preventDefault()
-        console.log(JSON.stringify(loginData))
-        localStorage.setItem('token', JSON.stringify(loginData))
-        history.push('/')
-        window.location.reload()
+        // console.log(JSON.stringify(loginData))
+        // localStorage.setItem('token', JSON.stringify(loginData))
+        // history.push('/')
+        // window.location.reload()
+
+        axios
+            .post('https://secretfamilyrecipes3.herokuapp.com/api/auth/login', loginData)
+            .then(res => {
+                console.log('Login Res:', res)
+                localStorage.setItem('token', res.data.token)
+                history.push('/')
+            })
+            .catch(err => console.log('Login Error:', err.message))
     }
     
     return (
