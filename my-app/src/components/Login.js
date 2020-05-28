@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
 
-import axios from 'axios'
-
 import LoginCard from './styles/LoginCard'
 import axios from 'axios'
 
