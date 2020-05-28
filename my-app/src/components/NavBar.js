@@ -24,7 +24,7 @@ const NavBar = () => {
                         }}>
                             Logout
                         </button>
-                        {/* <Link to='/'>I won't go to home, but unsure where to go at the moment.</Link> */}
+                     
                         
                     </>
                 ):(

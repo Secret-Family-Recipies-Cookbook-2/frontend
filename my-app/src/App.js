@@ -9,10 +9,24 @@ import PrivateRoute from './utils/PrivateRoute.js'
 import AddRecipeForm from './components/AddRecipeForm.js';
 import UpdateRecipeForm from './components/UpdateRecipeForm.js'
 import RecipesList from './components/RecipesList';
+import styled from 'styled-components'
+
+const AppStyles = styled.div`
+   
+
+    .body-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+`
+
+
 
 function App() {
   return (
-    <div className="App">
+    <AppStyles>
       <header>
       
         <NavBar />
@@ -42,7 +56,7 @@ function App() {
 
         </Switch>
       </div>
-    </div>
+    </AppStyles>
   );
 }
 

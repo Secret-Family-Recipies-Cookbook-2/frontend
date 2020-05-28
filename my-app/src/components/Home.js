@@ -2,6 +2,19 @@ import React, {useState, useEffect}from 'react'
 import {useHistory} from 'react-router-dom'
 import MockRecipe from './MockRecipe'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const HomeStyles = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   
+    .label{
+        font-family: 'Kaushan Script', cursive;
+        color: #AAAAFF;
+    }
+`
 
 
 const Home = () => {
@@ -28,12 +41,12 @@ const Home = () => {
     }, [])
     return (
 
-        <div className='home-container'>
+        <HomeStyles>
 
 
             <br />
 
-           <h2>Start Collecting Recipes Like These Now!</h2>
+           <h2 className='label'>Start Collecting Recipes Like These Now!</h2>
                 {
                 mockRecipes.map(recipe => {
                     return (
@@ -41,7 +54,7 @@ const Home = () => {
                     )
                 })  
                 }
-        </div>
+        </HomeStyles>
     )
 }
 export default Home
