@@ -47,7 +47,16 @@ const UpdateRecipeForm = props => {
         history.push(`/my-recipes`)
       })
       .catch(err => console.log(err))
+  }
 
+  const deleteRecipe = e => {
+    axiosWithAuth()
+      .delete(`api/recipes/${params.id}`)
+      .then(res => {
+        console.log('Delete Recipe Res:', res)
+      })
+      .catch(err => console.log(err))
+    history.push('/my-recipes')
   }
 
   return(
@@ -110,14 +119,14 @@ const UpdateRecipeForm = props => {
 
         <br />
 
-        {/* <input
+        <input
           name='submit'
           type='submit'
           value='Update Recipe'
-        /> */}
-
-        <button>Update Recipe</button>
+        />
       </form>
+      <br />
+      <button onClick={deleteRecipe}>Delete Recipe</button>
     </div>
   )
 }

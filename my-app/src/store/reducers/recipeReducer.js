@@ -23,7 +23,6 @@ const initialState = {
 }
 
 export const recipeReducer = (state = initialState, action) => {
-  console.log(state.recipes)
 
   switch(action.type){
     case POST_RECIPE_START:
