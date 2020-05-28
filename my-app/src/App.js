@@ -36,9 +36,9 @@ function App() {
 
           <PrivateRoute path='/update-recipe/:id' component={UpdateRecipeForm} />
 
-          <PrivateRoute path='/my-recipes' component={RecipesList} />
+          {/* <PrivateRoute path='/my-recipes' component={RecipesList} /> */}
 
-          <PrivateRoute path='/' component={Home} />
+          <PrivateRoute path='/' component={RecipesList} />
 
         </Switch>
       </div>

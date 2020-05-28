@@ -44,7 +44,7 @@ const UpdateRecipeForm = props => {
       .put(`api/recipes/${params.id}`, recipeInfo)
       .then(res => {
         console.log('Submit Update Res:', res)
-        history.push(`/my-recipes`)
+        history.push(`/`)
       })
       .catch(err => console.log(err))
   }
@@ -56,7 +56,7 @@ const UpdateRecipeForm = props => {
         console.log('Delete Recipe Res:', res)
       })
       .catch(err => console.log(err))
-    history.push('/my-recipes')
+    history.push('/')
   }
 
   return(
