@@ -88,24 +88,26 @@ const Login = () => {
         <>
             <LoginCard>
                 <form onSubmit={(evt)=>loginHandler(evt)}>
-                    <label>Username</label>
-                    <input 
-                        type='text'
-                        name='username'
-                        placeholder='Username'
-                        value={loginData.username}
-                        onChange={(evt)=> loginChangeHandler(evt)}
-                    />
-
-                    <label>Password</label>
-                    <input 
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                        value={loginData.password}
-                        onChange={(evt)=> loginChangeHandler(evt)}
-                    />
-
+                    <div className='input-container'>
+                        <label>Username:&nbsp;</label>
+                        <input 
+                            type='text'
+                            name='username'
+                            placeholder='Username'
+                            value={loginData.username}
+                            onChange={(evt)=> loginChangeHandler(evt)}
+                        />
+                    </div>
+                    <div className='input-container'>
+                        <label>Password:&nbsp;</label>
+                        <input 
+                            type='password'
+                            name='password'
+                            placeholder='Password'
+                            value={loginData.password}
+                            onChange={(evt)=> loginChangeHandler(evt)}
+                        />
+                    </div>
                     <button disabled={!buttonEnabled} type='submit'>Login</button>
                     <div className='errors-container'>
                         <div className='form-errors'>{loginFormErrors.username}</div>

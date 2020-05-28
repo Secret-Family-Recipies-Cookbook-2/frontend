@@ -4,7 +4,10 @@ const MockCard = styled.div`
     display:flex;
     flex-direction:column;
     /* align-items:flex-end; */
+
+
     background-color:  #DCAAFF;
+
     width: 45%;
     margin: 10px;
     padding: 15px;
