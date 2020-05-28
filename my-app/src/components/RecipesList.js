@@ -4,6 +4,14 @@ import RecipeCard from './RecipeCard'
 import {useHistory} from 'react-router-dom'
 import {getUserRecipes} from '../store/actions/recipeActions.js'
 
+import styled from 'styled-components'
+
+const ListStyle = styled.div`
+  .listHeader {
+    font-family: 'Kaushan Script', cursive;
+  }
+`
+
 const RecipiesList = props => {
   const history = useHistory()
 
@@ -14,10 +22,10 @@ const RecipiesList = props => {
   console.log(props.recipes)
 
   return(
-    <div>
+    <ListStyle>
       <br />
 
-      <h2>My Recipes:</h2>
+      <h2 className='listHeader'>My Recipes:</h2>
 
       {props.recipes.map(item => <RecipeCard key={item.id} recipe={item}/>)}
       
@@ -28,7 +36,7 @@ const RecipiesList = props => {
       </button>
 
       <br />
-    </div>
+    </ListStyle>
   )
 }
 
