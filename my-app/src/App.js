@@ -15,7 +15,7 @@ function App() {
         {/* <Link to='/register'>Register</Link> */}
         {/* <Link to='/'>Home</Link> */}
         {/* <Link to='/login'>Login/Register</Link> */}
-        <Login />
+        {/* <Login /> */}
          
       </header>
       <div className='body-container'>
@@ -24,7 +24,7 @@ function App() {
             <Register />
           </Route>
 
-          <Route path='/login'>
+          <Route exact path='/login'>
             <Login />
           </Route>
         </Switch>

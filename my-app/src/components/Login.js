@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
 import LoginCard from './styles/LoginCard'
+import axios from 'axios'
 
 const initialState= {
     username: '',
@@ -59,10 +60,19 @@ const Login = () => {
 
     const loginHandler = (evt) => {
         evt.preventDefault()
-        console.log(JSON.stringify(loginData))
-        localStorage.setItem('token', JSON.stringify(loginData))
-        history.push('/')
-        window.location.reload()
+        // console.log(JSON.stringify(loginData))
+        // localStorage.setItem('token', JSON.stringify(loginData))
+        // history.push('/')
+        // window.location.reload()
+        axios 
+            .post('https://seccretfamilyrecipes3.herokuapp.com/api/auth/register', loginData)
+            .then(res => {
+                console.log('Post New User Res:', res)
+                window.localStorage.setItem('token', res.data.data.token)
+                history.push('/')
+            })
+            .catch(err => console.log('Post Login Error'))
+
     }
     
     return (

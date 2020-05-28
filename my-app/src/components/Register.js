@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
+import axios from 'axios'
+import LoginCard from './styles/LoginCard'
 
 
 const initialState = {
@@ -67,14 +69,23 @@ const Register = () => {
 
     const registerHandler = (evt) => {
         evt.preventDefault()
-        console.log(JSON.stringify(registerData))
-        localStorage.setItem("token", JSON.stringify(registerData))
-        history.push('/')
-        window.location.reload()
+        // console.log(JSON.stringify(registerData))
+        // localStorage.setItem("token", JSON.stringify(registerData))
+        // history.push('/')
+        // window.location.reload()
+
+        axios 
+            .post('https://seccretfamilyrecipes3.herokuapp.com/api/auth/register', registerData)
+            .then(res => {
+                console.log('Post New User Res:', res)
+                window.localStorage.setItem('id', res.data.data.id)
+                history.push('/login')
+            })
+            .catch(err => console.log('Post New User Error:'))
     }
 
     return (
-        <div className='form-container'>
+        <LoginCard>
             <form onSubmit={(evt)=> registerHandler(evt)}>
                 <label>Username</label>
                 <input 
@@ -111,7 +122,7 @@ const Register = () => {
                 Already have an account?&nbsp;
                 <Link className='login-link' to='/login'>Click Here</Link>
             </div>
-        </div>
+        </LoginCard>
     )
 }
 export default Register
