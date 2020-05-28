@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+// import {useParams} from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
 import {UPDATE_RECIPE_SUCCESS} from '../store/actions/recipeActions.js'
 
@@ -16,7 +16,7 @@ const blankForm = {
 
 const UpdateRecipeForm = props => {
   const [recipeInfo, setRecipeInfo] = useState(blankForm)
-  const params = useParams()
+  // const params = useParams()
 
   useEffect(()=>{
     axiosWithAuth()
@@ -31,6 +31,7 @@ const UpdateRecipeForm = props => {
   }, [])
 
   const updateRecipe = e => {
+    e.preventDefault()
     setRecipeInfo({...recipeInfo, [e.target.name]:e.target.value})
   }
 
@@ -38,7 +39,7 @@ const UpdateRecipeForm = props => {
     e.preventDefault()
 
     axiosWithAuth
-      .put(`api/recipes/${params.id}`, recipeInfo)
+      .put(`api/recipes/${userID}`, recipeInfo)
       .then(res => {
         console.log(res)
         dispatchEvent({type: UPDATE_RECIPE_SUCCESS})
@@ -108,11 +109,13 @@ const UpdateRecipeForm = props => {
 
         <br />
 
-        <input
+        {/* <input
           name='submit'
           type='submit'
           value='Update Recipe'
-        />
+        /> */}
+
+        <button>Update Recipe</button>
       </form>
     </div>
   )

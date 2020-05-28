@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import {useHistory} from 'react-router-dom'
-import {connect} from 'react-redux'
 
 const userID = window.localStorage.getItem('id')
 
@@ -19,16 +18,18 @@ const AddRecipeForm = props => {
   const history = useHistory()
 
   const changeRecipe = e => {
+    e.preventDefault()
     setRecipe({...recipe, [e.target.name]:e.target.value})
   }
 
   const submitRecipe = e => {
+    e.preventDefault()
     axiosWithAuth()
       .post(`api/recipes/${userID}/user`, recipe)
         .then(res => {
           console.log('Post New Recipe Res:', res)
         })
-        .catch(err => console.log('Post New Recipe Error:', err.errorMessage))
+        .catch(err => console.log('Post New Recipe Error:', err))
     history.push('/')
   }
 
@@ -102,4 +103,4 @@ const AddRecipeForm = props => {
   )
 }
 
-export default connect(null, {})(AddRecipeForm)
+export default AddRecipeForm
