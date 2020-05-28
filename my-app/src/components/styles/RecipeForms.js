@@ -15,6 +15,11 @@ const RecipeForms = styled.div`
       margin: 5px 0;
     }
 
+    label{
+      display:flex;
+      flex-direction:column;
+    }
+
     .submitBtn {
       width: 50%;
       margin: 2% 25%;
