@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory, Link } from 'react-router-dom'
+import NavStyles from './styles/NavStyles'
 
 const NavBar = () => {
 
@@ -9,7 +10,7 @@ const NavBar = () => {
     console.log(token)
 
     return (
-        <nav>
+        <NavStyles>
 
             <a href='https://secretfamilyrecipesv2.netlify.app/'>Home</a>
             {
@@ -39,7 +40,7 @@ const NavBar = () => {
                     </>
                 )
             }
-        </nav>
+        </NavStyles>
     )
 }
 export default NavBar

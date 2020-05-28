@@ -91,29 +91,33 @@ const Register = () => {
     return (
         <LoginCard>
             <form onSubmit={(evt)=> registerHandler(evt)}>
-                <label>Username</label>
-                <input 
-                    type='text'
-                    name='username'
-                    value={registerData.username}
-                    onChange={(evt)=> registerChangeHandler(evt)}
-                />
-                <label>Email</label>
-                <input 
-                    type='text'
-                    name='email'
-                    value={registerData.email}
-                    onChange={(evt)=> registerChangeHandler(evt)}
-                />
-
-                <label>Password</label>
-                <input 
-                    type='password'
-                    name='password'
-                    value={registerData.password}
-                    onChange={(evt)=> registerChangeHandler(evt)}
-                />
-
+                <div className='input-container'>
+                    <label>Username:&nbsp;</label>
+                    <input 
+                        type='text'
+                        name='username'
+                        value={registerData.username}
+                        onChange={(evt)=> registerChangeHandler(evt)}
+                    />
+                </div>
+                <div className='input-container'>
+                    <label>Email:&nbsp;</label>
+                    <input 
+                        type='text'
+                        name='email'
+                        value={registerData.email}
+                        onChange={(evt)=> registerChangeHandler(evt)}
+                    />
+                </div>
+                <div className='input-container'>
+                    <label>Password:&nbsp;</label>
+                    <input 
+                        type='password'
+                        name='password'
+                        value={registerData.password}
+                        onChange={(evt)=> registerChangeHandler(evt)}
+                    />
+                </div>
                 <button disabled={!buttonEnabled} type='submit'>Register</button>
                 <div className='errors-container'>
                     <div className='form-errors'>{registerFormErrors.username}</div>
