@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
-
 import axios from 'axios'
-
 import LoginCard from './styles/LoginCard'
+import Home from './Home'
 
 
 
@@ -78,6 +77,9 @@ const Login = () => {
                 history.push('/')
             })
             .catch(err => console.log('Login Error:', err.message))
+            .finally(()=> {
+                window.location.reload()
+            })
     }
     
     return (
@@ -114,7 +116,7 @@ const Login = () => {
                     <Link className='register-link' to='/register'>Click Here</Link>
                 </div>
             </LoginCard>
-            
+            <Home />
         </>
     )
 }
