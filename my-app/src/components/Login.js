@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
+import LoginCard from './styles/LoginCard'
 
 const initialState= {
     username: '',
@@ -66,7 +67,7 @@ const Login = () => {
     
     return (
         <>
-            <div className='form-container'>
+            <LoginCard>
                 <form onSubmit={(evt)=>loginHandler(evt)}>
                     <label>Username</label>
                     <input 
@@ -97,7 +98,7 @@ const Login = () => {
                     Don't have an account?&nbsp;
                     <Link className='register-link' to='/register'>Click Here</Link>
                 </div>
-            </div>
+            </LoginCard>
             
         </>
     )
