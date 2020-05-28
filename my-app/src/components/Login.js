@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import axios from 'axios'
 
 import LoginCard from './styles/LoginCard'
-import axios from 'axios'
+
 
 
 const initialState= {
