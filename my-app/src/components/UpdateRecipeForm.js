@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
-import {useDispatch} from 'react-redux'
-import {UPDATE_RECIPE_SUCCESS} from '../store/actions/recipeActions.js'
+import RecipeForms from './styles/RecipeForms.js'
 
 const userID = window.localStorage.getItem('id')
 
@@ -60,7 +59,7 @@ const UpdateRecipeForm = props => {
   }
 
   return(
-    <div>
+    <RecipeForms>
       <h1>Update Recipe:</h1>
 
       <form onSubmit={submitUpdate}>
@@ -98,7 +97,9 @@ const UpdateRecipeForm = props => {
         <br />
 
         <label>Ingredients:
-          <input
+          <textarea
+            cols='25'
+            rows='4'
             name='ingredients'
             type='text'
             value={recipeInfo.ingredients}
@@ -109,7 +110,9 @@ const UpdateRecipeForm = props => {
         <br />
 
         <label>Instructions:
-          <input
+          <textarea
+            cols='25'
+            rows='4'
             name='instructions'
             type='text'
             value={recipeInfo.instructions}
@@ -120,6 +123,7 @@ const UpdateRecipeForm = props => {
         <br />
 
         <input
+          className='submitBtn'
           name='submit'
           type='submit'
           value='Update Recipe'
@@ -127,7 +131,7 @@ const UpdateRecipeForm = props => {
       </form>
       <br />
       <button onClick={deleteRecipe}>Delete Recipe</button>
-    </div>
+    </RecipeForms>
   )
 }
 
