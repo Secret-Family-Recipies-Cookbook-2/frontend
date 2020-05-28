@@ -30,8 +30,6 @@ const Home = () => {
     return (
         <>
 
-            <button onClick={()=> history.push('my-recipes')}>My Recipes</button>
-
             <br />
 
            <h2>Start Collecting Recipes Like These Now!</h2>
