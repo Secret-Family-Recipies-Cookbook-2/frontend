@@ -27,9 +27,9 @@ const Home = () => {
         getMockData()
     }, [])
     return (
+
         <div className='home-container'>
-            {/* I think we can remove the button */}
-            <button onClick={()=> history.push('my-recipes')}>My Recipes</button>
+
 
             <br />
 
