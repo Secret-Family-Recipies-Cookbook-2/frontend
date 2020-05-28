@@ -24,7 +24,7 @@ const Home = () => {
     }, [])
     return (
         <>
-            <h1>Featured Recipies:</h1>
+           <h2>Start Collecting Recipes Like These Now!</h2>
                 {
                 mockRecipes.map(recipe => {
                     return (

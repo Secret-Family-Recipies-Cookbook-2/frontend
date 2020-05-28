@@ -67,9 +67,9 @@ const Login = () => {
             .then(res => {
                 console.log('Login Res:', res)
                 localStorage.setItem('token', res.data.token)
+                history.push('/')
             })
             .catch(err => console.log('Login Error:', err.message))
-        history.push('/')
     }
     
     return (

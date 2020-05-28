@@ -11,11 +11,11 @@ const RecipiesList = props => {
     <div>
       <h2>My Recipies:</h2>
 
-      {props.recipies.map(item => <RecipeCard recipe={item}/>)}
+      {props.recipes.map(item => <RecipeCard recipe={item}/>)}
       
       <br />
 
-      <button onClick={()=> history.push(`/add-recipe`)}>
+      <button onClick={()=> history.push(`add-recipe/:user_id`)}>
         Add New Recipie
       </button>
 
@@ -26,7 +26,7 @@ const RecipiesList = props => {
 
 const mapStateToProps = state => {
   return{
-    recipies: state.recipies
+    recipes: state.recipes
   }
 }
 

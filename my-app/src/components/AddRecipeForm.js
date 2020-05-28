@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import {useParams, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
-// import {postRecipe} from '../store/actions/recipeActions.js'
 
 const blankForm = {
   title: '',
   ingredients: '',
   instructions: '',
   category: '',
-  source: ''
+  source: '',
+  // user_id: ''
 }
 
 const AddRecipeForm = props => {
@@ -17,20 +17,23 @@ const AddRecipeForm = props => {
   const params = useParams()
   const history = useHistory()
 
+  console.log(params)
+
+  // setRecipe({...recipe, [user_id]: params.user_id})
+
   const changeRecipe = e => {
     setRecipe({...recipe, [e.target.name]:e.target.value})
   }
 
   const submitRecipe = e => {
-    // props.postRecipe(recipe)
-
     axiosWithAuth()
-      .post(`api/recipes/${params.id}/user`, recipe)
-        .then(res => console.log('Post New Recipe Res:', res))
+      .post(`api/recipes/${params.user_id}/user`, recipe)
+        .then(res => {
+          console.log('Post New Recipe Res:', res)
+          setRecipe(res.data)
+        })
         .catch(err => console.log('Post New Recipe Error:', err.errorMessage))
-    history.push('/home')
-
-
+    history.push('/')
   }
 
   return(
@@ -98,7 +101,7 @@ const AddRecipeForm = props => {
           type='submit'
           value='Add Recipe!'
         />
-      </form>
+          </form>
     </div>
   )
 }

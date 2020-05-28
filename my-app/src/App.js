@@ -29,9 +29,9 @@ function App() {
             <Login />
           </Route>
 
-          <PrivateRoute path='/add-recipe' component={AddRecipeForm} />
+          <PrivateRoute path='/add-recipe/:user_id' component={AddRecipeForm} />
 
-          <PrivateRoute path='update-recipe' component={UpdateRecipeForm} />
+          <PrivateRoute path='/update-recipe' component={UpdateRecipeForm} />
 
           <PrivateRoute path='/' component={Home} />
         </Switch>
