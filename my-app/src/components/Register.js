@@ -5,6 +5,7 @@ import axios from 'axios'
 import LoginCard from './styles/LoginCard'
 
 
+
 const initialState = {
     username: '',
     password: '',
@@ -74,14 +75,17 @@ const Register = () => {
         // history.push('/')
         // window.location.reload()
 
-        axios 
-            .post('https://seccretfamilyrecipes3.herokuapp.com/api/auth/register', registerData)
+        axios
+            .post('https://secretfamilyrecipes3.herokuapp.com/api/auth/register', registerData)
+
             .then(res => {
                 console.log('Post New User Res:', res)
                 window.localStorage.setItem('id', res.data.data.id)
                 history.push('/login')
             })
-            .catch(err => console.log('Post New User Error:'))
+
+
+            .catch(err => console.log('Post New User Error:', err.message))
     }
 
     return (
