@@ -16,17 +16,19 @@ function App() {
       <header>
       
         <NavBar />
-        <Link to='/register'>Register</Link>
-        <Link to='/login'>Login</Link>
+        {/* <Link to='/register'>Register</Link> */}
+        {/* <Link to='/'>Home</Link> */}
+        {/* <Link to='/login'>Login/Register</Link> */}
+        <Login />
          
       </header>
       <div className='body-container'>
         <Switch>
-          <Route path='/register' component={Register}>
+          <Route path='/register' >
             <Register />
           </Route>
 
-          <Route path='/login'component={Login}>
+          <Route path='/login'>
             <Login />
           </Route>
 
@@ -37,6 +39,7 @@ function App() {
           <PrivateRoute path='/my-recipes' component={RecipesList} />
 
           <PrivateRoute path='/' component={Home} />
+
         </Switch>
       </div>
     </div>

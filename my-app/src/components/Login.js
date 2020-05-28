@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
+
 import axios from 'axios'
+
+import LoginCard from './styles/LoginCard'
+
 
 const initialState= {
     username: '',
@@ -39,6 +43,8 @@ const Login = () => {
     }, [loginData])
 
     const loginChangeHandler = (evt) => {
+
+        evt.persist()
         setLoginData({...loginData, [evt.target.name]: evt.target.value})
 
         yup
@@ -50,7 +56,7 @@ const Login = () => {
             .catch((err) => {
                 setLoginFormErrors({
                     ...loginFormErrors,
-                    //[evt.target.name]: err.errors[0]
+                    [evt.target.name]: err.errors[0]
                 })
             })
     }
@@ -73,35 +79,41 @@ const Login = () => {
     }
     
     return (
-        <div className='login-container'>
-            <form onSubmit={(evt)=>loginHandler(evt)}>
-                <label>Username</label>
-                <input 
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={loginData.username}
-                    onChange={(evt)=> loginChangeHandler(evt)}
-                />
+        <>
+            <LoginCard>
+                <form onSubmit={(evt)=>loginHandler(evt)}>
+                    <label>Username</label>
+                    <input 
+                        type='text'
+                        name='username'
+                        placeholder='Username'
+                        value={loginData.username}
+                        onChange={(evt)=> loginChangeHandler(evt)}
+                    />
 
-                <label>Password</label>
-                <input 
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={loginData.password}
-                    onChange={(evt)=> loginChangeHandler(evt)}
-                />
+                    <label>Password</label>
+                    <input 
+                        type='password'
+                        name='password'
+                        placeholder='Password'
+                        value={loginData.password}
+                        onChange={(evt)=> loginChangeHandler(evt)}
+                    />
 
-                <button disabled={!buttonEnabled} type='submit'>Login</button>
-                <div className='errors-container'>
-                    <div className='form-errors'>{loginFormErrors.username}</div>
-                    <div className='form-errors'>{loginFormErrors.email}</div>
-                    <div className='form-errors'>{loginFormErrors.password}</div>
+                    <button disabled={!buttonEnabled} type='submit'>Login</button>
+                    <div className='errors-container'>
+                        <div className='form-errors'>{loginFormErrors.username}</div>
+                        <div className='form-errors'>{loginFormErrors.email}</div>
+                        <div className='form-errors'>{loginFormErrors.password}</div>
+                    </div>
+                </form>
+                <div className='no-account'>
+                    Don't have an account?&nbsp;
+                    <Link className='register-link' to='/register'>Click Here</Link>
                 </div>
-            </form>
-
-        </div>
+            </LoginCard>
+            
+        </>
     )
 }
 export default Login

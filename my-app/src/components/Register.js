@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import * as yup from 'yup'
 import axios from 'axios'
+
 
 const initialState = {
     username: '',
@@ -49,7 +50,7 @@ const Register = () => {
     },[registerData])
     
     const registerChangeHandler = (evt) => {
-    
+        evt.persist()
 
         yup 
             .reach(registerSchema, evt.target.name)
@@ -59,7 +60,7 @@ const Register = () => {
             })
             .catch(err => {
                 setRegisterFormErrors({...registerFormErrors, 
-                 //[evt.target.name]: err.errors[0]
+                [evt.target.name]: err.errors[0]
                 })
             })
         setRegisterData({...registerData, [evt.target.name]: evt.target.value})
@@ -83,7 +84,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <div className='form-container'>
             <form onSubmit={(evt)=> registerHandler(evt)}>
                 <label>Username</label>
                 <input 
@@ -115,7 +116,12 @@ const Register = () => {
                     <div className='form-errors'>{registerFormErrors.password}</div>
                 </div>
             </form>
-        </>
+
+            <div className='no-account'>
+                Already have an account?&nbsp;
+                <Link className='login-link' to='/login'>Click Here</Link>
+            </div>
+        </div>
     )
 }
 export default Register
