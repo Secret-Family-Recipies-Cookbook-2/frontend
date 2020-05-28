@@ -1,8 +1,9 @@
 import React from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 
 const RecipeCard = props => {
   const history = useHistory()
+  // const params = useParams()
 
   return(
     <div>
@@ -14,7 +15,7 @@ const RecipeCard = props => {
      
       <br />
      
-      <button onClick={()=> history.push('/update-recipe')}>
+      <button onClick={()=> history.push(`/update-recipe/${props.recipe.id}`)}>
         Edit Recipe
       </button>
      

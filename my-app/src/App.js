@@ -32,7 +32,7 @@ function App() {
 
           <PrivateRoute path='/add-recipe/:user_id' component={AddRecipeForm} />
 
-          {/* <PrivateRoute path='/update-recipe' component={UpdateRecipeForm} /> */}
+          <PrivateRoute path='/update-recipe/:id' component={UpdateRecipeForm} />
 
           <PrivateRoute path='/my-recipes' component={RecipesList} />
 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
-// import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
+import {useDispatch} from 'react-redux'
 import {UPDATE_RECIPE_SUCCESS} from '../store/actions/recipeActions.js'
 
 const userID = window.localStorage.getItem('id')
@@ -16,11 +17,12 @@ const blankForm = {
 
 const UpdateRecipeForm = props => {
   const [recipeInfo, setRecipeInfo] = useState(blankForm)
-  // const params = useParams()
+  const history = useHistory()
+  const params = useParams()
 
   useEffect(()=>{
     axiosWithAuth()
-      .get(`api/recipes/${userID}`)
+      .get(`api/recipes/${params.id}`)
       .then(res => {
         console.log('Update Recipe Get Request:', res)
         setRecipeInfo(res.data[0])
@@ -38,12 +40,11 @@ const UpdateRecipeForm = props => {
   const submitUpdate = e => {
     e.preventDefault()
 
-    axiosWithAuth
-      .put(`api/recipes/${userID}`, recipeInfo)
+    axiosWithAuth()
+      .put(`api/recipes/${params.id}`, recipeInfo)
       .then(res => {
-        console.log(res)
-        dispatchEvent({type: UPDATE_RECIPE_SUCCESS})
-        // history.push(`/movies/${params.id}`)
+        console.log('Submit Update Res:', res)
+        history.push(`/my-recipes`)
       })
       .catch(err => console.log(err))
 
@@ -53,7 +54,7 @@ const UpdateRecipeForm = props => {
     <div>
       <h1>Update Recipe:</h1>
 
-      <form>
+      <form onSubmit={submitUpdate}>
         <label>Category:
           <input
             name='category'

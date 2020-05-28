@@ -17,14 +17,14 @@ const RecipiesList = props => {
     <div>
       <br />
 
-      <h2>My Recipies:</h2>
+      <h2>My Recipes:</h2>
 
-      {props.recipes.map(item => <RecipeCard recipe={item}/>)}
+      {props.recipes.map(item => <RecipeCard key={item.id} recipe={item}/>)}
       
       <br />
 
       <button onClick={()=> history.push(`add-recipe/:user_id`)}>
-        Add New Recipie
+        Add New Recipe
       </button>
 
       <br />
